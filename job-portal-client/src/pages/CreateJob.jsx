@@ -59,6 +59,7 @@ export const CreateJob = () => {
             
             </div>
 
+
             <div className="lg:w-1/2 w-full">
                 <label className='block mb-2 text-lg'>Company Name</label>
                 <input type="text" placeholder='Ex: Microsoft'
