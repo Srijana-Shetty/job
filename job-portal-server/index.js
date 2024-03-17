@@ -3,6 +3,9 @@ const app = express()
 const cors = require('cors')
 const port = process.env.PORT || 3000;
 require('dotenv').config()
+const connection = require("./db")
+const userRoutes = require('./routes/users');
+const authRoutes = require('./routes/auth');
 //console.log(process.env.DB_USER)
 //console.log(process.env.DB_PASSWORD)
 
@@ -11,6 +14,12 @@ app.use(express.json())          //connect serverto frontend
 app.use(cors())             
 
 
+connection();                   //make a connection to the database
+
+
+//routes
+app.use("/api/users", userRoutes);
+app.use("api/auth", authRoutes);
 
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@job-portal-mern.ivcgcr0.mongodb.net/?retryWrites=true&w=majority&appName=job-portal-mern`;
